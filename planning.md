@@ -10,6 +10,7 @@
 ## Domain
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+This guide covers dining options at and around the University of North Carolina at Charlotte. As a student it can be daunting to find what to eat especially if you're in a new state or lack transportation. This knowledge is hard to find because student opinions are split between multiple different sources, while the official UNC Charlotte website only provides surface level information on the dining halls.
 
 ---
 
@@ -20,16 +21,16 @@
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | UNC Charlotte Official Dining Halls Page | Official university page listing of the dining halls, SoVi and Social 704, with food station descriptions and payment options. | https://aux.charlotte.edu/dining/dining-map/dining-halls |
+| 2 | UNC Charlotte Dining Options Overview | Official overview of all campus dining including retail locations, food trucks, and late-night dining. | https://dining.charlotte.edu/dining-options/ |
+| 3 | Dine on Campus – UNCC Menu & Hours | Official menu and hours portal where students check daily food offerings at SoVi and Social 704. | https://dineoncampus.com/unccharlotte/ |
+| 4 | Niner Times – "Dining Options on Campus" (2023) | Student newspaper article reviewing on-campus dining locations, food stations, and tips for navigating dining options. | https://www.ninertimes.com/arts_and_culture/dining-options-on-campus/article_1643389a-f39b-11ed-9c0c-1b317a3db9ed.html |
+| 5 | Niner Nation Guide – On-Campus Dining (2021) | Student-written guide covering all on-campus dining locations including Crown Commons, SoVi, Prospector, and cafe spots. | https://issuu.com/midasmag/docs/niner_nation_guide_2021_numba_3/s/12418952 |
+| 6 | Niner Nation Guide – Off-Campus Dining (2021) | Student-written guide recommending 10 off-campus restaurants near UNCC for when dining halls get repetitive. | https://issuu.com/midasmag/docs/niner_nation_guide_2021_numba_3/10 |
+| 7 | Arcadia UNCC – Meal Plans & On-Campus Dining Guide | Student blog post explaining meal plan options, dining hall layouts, dietary accommodations, and practical tips. | https://arcadiauncc.com/blog/meal-plan-uncc-arcadia/ |
+| 8 | r/UNCCharlotte Reddit – Dining & Meal Plan Threads | Student Reddit posts and comments about food quality, meal plan value, wait times, and dining hall tips. (Manually copied from r/UNCCharlotte) | https://www.reddit.com/r/UNCCharlotte/ |
+| 9 | Yelp Reviews – SoVi Dining Hall | Student and visitor Yelp reviews of SoVi covering food quality, variety, hours, and overall experience. (Manually copied from Yelp) | https://www.yelp.com/search?find_desc=SoVi+Dining+UNC+Charlotte |
+| 10 | Google Reviews – Social 704 / Crown Commons | Google Maps student reviews of Social 704 (formerly Crown Commons) covering food quality and dining experience. (Manually copied from Google Maps) | https://maps.google.com (search "Social 704 UNC Charlotte") |
 
 ---
 
