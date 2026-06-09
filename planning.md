@@ -112,6 +112,17 @@ Based on my research the average student review is about 1-3 sentences which is 
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
 
+Document Ingestion     Chunking            Embedding +          Retrieval           Generation
+Vector Store
+│                   │                    │                    │                   │
+┌─────────────┐    ┌─────────────┐    ┌─────────────────┐    ┌──────────────┐    ┌──────────────┐
+│  .txt files │    │    Char     │    │ all-MiniLM-L6-v2│    │   ChromaDB   │    │   Groq API   │
+│  (10 docs)  │───▶│  Splitter  │───▶│    (embed)      │───▶│   top-k=5   │───▶│ llama-3.3-   │
+│  from docs/ │    │ 400 chars  │    │      +          │    │  semantic   │    │    70b +     │
+│   folder    │    │ 50 overlap │    │    ChromaDB     │    │   search    │    │  grounding   │
+│             │    │            │    │    (store)      │    │             │    │   prompt     │
+└─────────────┘    └─────────────┘    └─────────────────┘    └──────────────┘    └──────────────┘
+
 ---
 
 ## AI Tool Plan
@@ -125,7 +136,6 @@ Based on my research the average student review is about 1-3 sentences which is 
      "I'll use AI to help me code" is not a plan.
      "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
      with my specified chunk size and overlap" is a plan. -->
-
      
 
 **Milestone 3 — Ingestion and chunking:**
