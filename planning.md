@@ -40,13 +40,16 @@ This guide covers dining options at and around the University of North Carolina 
      State your chunk size (in tokens or characters), overlap size, and explain why those
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
+I have a wide variety of different sources with different lengths ranging from short reviews to medium length articles. Because the most valuable content seems to be student reviews, which are usually shorter, I am going to use a chunk size of 400 characters with an overlap of 50. 
 
 **Chunk size:**
+400
 
 **Overlap:**
+50
 
 **Reasoning:**
-
+Based on my research the average student review is about 1-3 sentences which is typically around 300-400 characters. Since the content I'm using isn't structured and theirs a chance that I split t useful context, I went with an overlap of 50. This should catch and sentences I split and ensure that I gather enough context. I'll be able to tell if my chunks are too small if it returns fragmented text and too large if it shows a mix of unrelated topics.
 ---
 
 ## Retrieval Approach
@@ -57,11 +60,17 @@ This guide covers dining options at and around the University of North Carolina 
      would you weigh in choosing a different embedding model — context length, multilingual
      support, accuracy on domain-specific text, latency? -->
 
-**Embedding model:**
+**Embedding model:** all-MiniLM-L6-v2
 
-**Top-k:**
+**Top-k:** 5 chunks per query
 
 **Production tradeoff reflection:**
+- Context length: all-MiniLM-L6-v2 handles up to 256 tokens. For longer documents, a model with longer context windows would be better.
+- Accuracy on domain-specific text: MiniLM is general-purpose. For a production dining system, a fine-tuned model on review-style text might improve retrieval relevance.
+- Latency: Local models like MiniLM have no network latency. API-based models add round-trip time, which matters for a real-time query interface.
+- Cost: MiniLM is free and local. OpenAI embeddings cost per token but offer higher accuracy and multilingual support.
+- Multilingual support: MiniLM is English-only. A model like paraphrase-multilingual-MiniLM-L12-v2 would be needed if serving non-English-speaking students.
+
 
 ---
 
@@ -74,11 +83,11 @@ This guide covers dining options at and around the University of North Carolina 
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | What dining halls are available at UNC Charlotte and where are they located? | SoVi is located in South Village Crossing and Social 704 is located in the Popp Martin Student Union. Both are all-you-care-to-eat buffet-style dining halls. |
+| 2 | Does SoVi have options for students with dietary restrictions or allergies? | Yes, SoVi has a "Delicious Without" station serving dishes free of the top 9 allergens, plus designated vegan and gluten-avoiding options. |
+| 3 | Is the meal plan worth it at UNC Charlotte according to students? | Student opinions are mixed — some find it convenient and good value for resident students, while others feel it is overpriced for the food quality and variety offered. |
+| 4 | What do students say about food quality at the dining halls? | Reviews are mixed — students note decent variety but inconsistent quality, with stations like the grill, pizza (Burning Stone), and the SoVi bakery frequently mentioned as highlights. |
+| 5 | What are some food options near campus? | Nearby options include Boardwalk Billy's, Midnight Diner, Cava, and various chain restaurants accessible via light rail or a short drive from campus. |
 
 ---
 
@@ -88,9 +97,10 @@ This guide covers dining options at and around the University of North Carolina 
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. Noisy or inconsistent review documents: Articles, Reddit posts, and Yelp reviews are informal, inconsistent in length, and may contain slang, typos, or off-topic content. This could produce low-quality chunks that confuse retrieval.
 
-2.
+2. Official sources vs. student opinion mismatch: The official dining pages describe stations and options in marketing language, while student reviews describe real experiences. A query like "is the food good?" might retrieve the official description ("fresh ingredients, rotating menus") instead of the honest student opinion, which could lead to an overly positive response.
+
 
 ---
 
@@ -116,8 +126,15 @@ This guide covers dining options at and around the University of North Carolina 
      "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
      with my specified chunk size and overlap" is a plan. -->
 
+     
+
 **Milestone 3 — Ingestion and chunking:**
+I will give Claude the Documents section (file types, sources) and the Chunking Strategy section (400 chars, 50 overlap) and ask it to implement a script that loads all .txt files from a docs/ folder, cleans them (strips HTML, extra whitespace, boilerplate), and produces chunks using CharacterTextSplitter. I will verify the output by printing 5 sample chunks and confirming they are readable, self-contained, and match the specified chunk size.
+
 
 **Milestone 4 — Embedding and retrieval:**
+I will give Claude the Retrieval Approach section (all-MiniLM-L6-v2, top-k=5) and the Architecture diagram and ask it to implement code that embeds chunks using sentence-transformers and stores them in ChromaDB with source metadata. I will also ask it to implement a retrieve(query, k=5) function. I will verify by running 3 test queries and confirming the returned chunks are visibly relevant and have distance scores below 0.5.
+
 
 **Milestone 5 — Generation and interface:**
+I will give Claude the grounding requirements and the Gradio interface requirements and ask it to implement a generate() function using Groq's llama-3.3-70b-versatile with a strict grounding prompt, and a app.py Gradio Blocks UI with query input, answer output, and sources output fields. I will verify by testing an in-scope query (should cite a source) and an out-of-scope query (should decline to answer).
